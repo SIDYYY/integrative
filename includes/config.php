@@ -22,18 +22,18 @@ if (!$conn) {
 }
 
 // Function to Check If User is Logged In
-function checkLogin() {
-    if (!isset($_SESSION['userId'])) {
-        header("Location: ../login.php"); 
-        exit();
-    }
-}
+// function checkLogin() {
+//     if (!isset($_SESSION['userId'])) {
+//         header("Location: ../login.php"); 
+//         exit();
+//     }
+// }
 
-// Function to Check Admin Role
-function checkAdmin() {
-    if ($_SESSION['role'] !== 'admin') {
-        header("Location: ../user/dashboard.php"); 
-        exit();
-    }
-}
-?>
+// // Function to Check Admin Role
+// function checkAdmin() {
+//     if ($_SESSION['role'] !== 'admin') {
+//         header("Location: ../user/dashboard.php"); 
+//         exit();
+//     }
+// }
+// ?>

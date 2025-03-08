@@ -17,32 +17,47 @@ style="background: url('https://png.pngtree.com/background/20230412/original/png
                     <h3 class="text-center mb-4">Login</h3>
 
                     <?php
+                    session_start();
+                    include 'includes/config.php';
+
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                        include 'includes/config.php';
+                        $email = trim($_POST['email']);
+                        $password = trim($_POST['password']);
 
-                        $email = $_POST['email'];
-                        $password = $_POST['password'];
+                        $query = "SELECT * FROM users WHERE email = ? LIMIT 1";
+                        $stmt = $conn->prepare($query);
+                        $stmt->bind_param("s", $email);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        $user = $result->fetch_assoc();
 
-                        $query = "SELECT * FROM users WHERE email='$email' LIMIT 1";
-                        $result = mysqli_query($conn, $query);
-                        $user = mysqli_fetch_assoc($result);
-
-                        if (password_verify($password, $user['password'])) {  
+                        if ($user && password_verify($password, $user['password'])) {
+                            $_SESSION['auth'] = true;
                             $_SESSION['userId'] = $user['userId'];
-                            $_SESSION['role'] = $user['role']; 
+                            $_SESSION['userRole'] = $user['role']; 
+                            $_SESSION['authUser'] = [
+                                'userId' => $user['userId'],
+                                'fullName' => $user['firstName'] . ' ' . $user['lastName'],
+                                'emailAddress' => $user['email'],
+                            ];
 
-                            if ($user['role'] == 'Admin') {
+                            $_SESSION['message'] = "Welcome " . $_SESSION['authUser']['fullName'] . "!";
+                            $_SESSION['code'] = "info";
+
+                            if ($user['role'] === 'Admin') {
                                 header("Location: admin/index.php");
                             } else {
                                 header("Location: user/index.php");
                             }
                             exit();
                         } else {
-                            echo '<div class="alert alert-danger text-center">Invalid login credentials!</div>';
+                            $_SESSION['message'] = "Invalid login credentials!";
+                            $_SESSION['code'] = "danger";
+                            header("Location: login.php");
+                            exit();
                         }
                     }
                     ?>
-
                     <form method="POST" action="login.php">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
@@ -67,5 +82,31 @@ style="background: url('https://png.pngtree.com/background/20230412/original/png
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <?php
+  if(isset($_SESSION['message']) && $_SESSION['code'] !='') {
+      ?>
+      <script>
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        Toast.fire({
+          icon: "<?php echo $_SESSION['code']; ?>",
+          title: "<?php echo $_SESSION['message']; ?>"
+        });
+      </script>
+      <?php
+      unset($_SESSION['message']);
+      unset($_SESSION['code']);
+  }     
+?>
 </body>
 </html>

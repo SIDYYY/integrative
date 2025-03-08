@@ -1,6 +1,13 @@
 <?php
 session_start();
-session_destroy();
+
+unset( $_SESSION['auth']);
+unset( $_SESSION['userRole']);
+unset( $_SESSION['authUser']);
+
+$_SESSION['message'] = "Logout Successfull";
+$_SESSION['code'] = "success";
 header("Location: login.php");
-exit();
+
+exit(0);
 ?>

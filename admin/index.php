@@ -2,6 +2,7 @@
       include '../includes/inHeader.php';
       include '../includes/sidebar.php'; 
       include '../includes/config.php';
+      include '../auth/adminAuth.php';
 
       $query = "SELECT COUNT(*) AS total_orders FROM orders";
       $result = mysqli_query($conn, $query);

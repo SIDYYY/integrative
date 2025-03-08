@@ -1,6 +1,7 @@
-<?php include '../includes/inHeader.php'; ?>
-<?php include '../includes/sidebar.php'; ?>
-<?php include '../includes/config.php'; // Database connection ?>
+<?php include '../includes/inHeader.php'; 
+      include '../includes/sidebar.php'; 
+      include '../includes/config.php'; 
+      include '../auth/userAuth.php'?>
 
 <div class="container mt-5 pt-5 ">
     <h2>Welcome to Our Shop!</h2>
