@@ -22,8 +22,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
         <a class="navbar-brand" href="index.php">
-            <img src="../assets/img/coffeelogo.webp" alt="Coffee Shop Logo" width="40" height="40">
-             Coffee Shop
+            <img src="assets/img/coffeelogo.webp" alt="Coffee Shop Logo" width="40" height="40">
+             DD's Online Shop
         </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>

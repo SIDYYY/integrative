@@ -1,9 +1,11 @@
 <?php
 include '../includes/sidebar.php';
-include '../includes/inHeader.php';
+include '../auth/userAuth.php';
 include '../includes/config.php';
+include '../includes/toast.php';
 
 
+// Update Users Address 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $new_address = trim($_POST['address']);
     
@@ -11,10 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $update_query->bind_param("si", $new_address, $_SESSION['userId']);
     
     if ($update_query->execute()) {
-        echo "<script>alert('Address updated successfully!'); window.location.href='cart.php';</script>";
+        $_SESSION['message'] = "Address Updated Successfully!";
+        $_SESSION['code'] = "success";
     } else {
-        echo "<script>alert('Error updating address.');</script>";
+        $_SESSION['message'] = "Error : Failed to  Update Your Address!";
+        $_SESSION['code'] = "danger";
     }
+    header("Location: cart.php");
+    exit();
 }
 
 // Fetch existing address
@@ -25,7 +31,8 @@ $address_result = $address_query->get_result();
 $user_address = ($address_result->num_rows > 0) ? $address_result->fetch_assoc()['address'] : "";
 ?>
 
-<div class="container mt-5 pt-5">
+<!-- Address Information Form  -->
+<div class="container pt-5">
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-5">
             <div class="card shadow-sm border-0">
@@ -47,3 +54,4 @@ $user_address = ($address_result->num_rows > 0) ? $address_result->fetch_assoc()
 </div>
 
 <?php include '../includes/footer.php';?>
+

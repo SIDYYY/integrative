@@ -11,3 +11,5 @@ header("Location: login.php");
 
 exit(0);
 ?>
+
+<!-- Logout Function  -->

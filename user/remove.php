@@ -1,5 +1,8 @@
 <?php
-include '../includes/config.php'; // Include database connection
+include '../includes/config.php'; 
+include '../includes/toast.php';
+include '../auth/userAuth.php';
+
 session_start();
 
 if (!isset($_SESSION['userId'])) {
@@ -16,12 +19,18 @@ if (isset($_GET['cartId'])) {
     $delete_query->execute();
 
     if ($delete_query->affected_rows > 0) {
-        echo "<script>alert('Item removed from cart!'); window.location.href='cart.php';</script>";
+        $_SESSION['message'] = "Item Removed from Cart!";
+        $_SESSION['code'] = "success";
     } else {
-        echo "<script>alert('Error removing item.'); window.location.href='cart.php';</script>";
-    }
+        $_SESSION['message'] = "Error : Failed to remove from Cart!";
+        $_SESSION['code'] = "danger";
+}
+header("Location: cart.php");
+exit();
 } else {
     header("Location: cart.php");
     exit();
 }
 ?>
+
+<!-- Basically Removing Product/Item from the CART  -->

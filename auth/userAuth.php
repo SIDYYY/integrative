@@ -1,21 +1,22 @@
 <?php
-include(__DIR__ . '../includes/config.php');
+include('../includes/config.php');
 
-if(!isset($_SESSION['auth'])){
+if (!isset($_SESSION['auth'])) {
     $_SESSION['message'] = "Login to access dashboard!";
     $_SESSION['code'] = "warning";
     header("Location: ../login.php");
     exit();
-}else
-{
-if($_SESSION['userRole'] != 'admin')
-{
+}
+
+if ($_SESSION['userRole'] !== 'User') {
     $_SESSION['message'] = "You are not authorized as USER!";
     $_SESSION['code'] = "warning";
-    header("Location: ../user/index.php");
+    
+    if ($_SESSION['userRole'] === 'Admin') {
+        header("Location: ../Admin/index.php");
+    } else {
+        header("Location: ../login.php");
+    }
     exit();
 }
-}
-
-
 ?>

@@ -1,6 +1,8 @@
 <?php
 include 'includes/config.php';
+include 'includes/toast.php';
 
+// Register Function 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
@@ -9,10 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $query = "INSERT INTO users (firstName, lastName, email, password) VALUES ('$firstName','$lastName', '$email', '$password')";
     if (mysqli_query($conn, $query)) {
-        echo '<div class="alert alert-success text-center">Registration successful! <a href="login.php">Login here</a></div>';
+        $_SESSION['message'] = "Register Successfully";
+        $_SESSION['code'] = "success";
     } else {
-        echo '<div class="alert alert-danger text-center">Error: ' . mysqli_error($conn) . '</div>';
+        $_SESSION['message'] = "Error : Fail to Register ";
+        $_SESSION['code'] = "danger";;
     }
+    header("Location: login.php");
+    exit();
 }
 ?>
 
@@ -28,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 style="background: url('https://png.pngtree.com/background/20230412/original/pngtree-coffee-background-cartoon-border-illustration-picture-image_2396465.jpg') no-repeat center center/cover;">>
 >
 
+<!-- Register Form  -->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-4">

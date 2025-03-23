@@ -1,7 +1,8 @@
 <?php
 include '../includes/config.php';
 include '../includes/sidebar.php'; 
-include '../includes/inHeader.php'; 
+include '../auth/userAuth.php';
+// include '../includes/inHeader.php'; 
 
 if (!isset($_SESSION['userId'])) {
     header("Location: login.php");
@@ -27,8 +28,8 @@ $cart_items->execute();
 $result = $cart_items->get_result();
 ?>
 
-<div class="container mt-5 pt-5">
-    <h2 class="mb-4">Shopping Cart</h2>
+<div class="container pt-5">
+    <h2 class="mb-4 ">Shopping Cart</h2>
 
     <!-- Shipping Address Box -->
     <div class="card shadow-sm border-0 bg-light mb-4">
@@ -39,6 +40,7 @@ $result = $cart_items->get_result();
         </div>
     </div>
 
+    <!-- Added to cart table  -->
     <?php if ($result->num_rows > 0) { ?>
         <table class="table table-bordered text-center">
             <thead class="table-dark">

@@ -1,7 +1,8 @@
 <?php 
-      include '../includes/inHeader.php';
+    //   include '../includes/inHeader.php';
       include '../includes/sidebar.php'; 
       include '../includes/config.php';
+      include '../includes/toast.php';
       include '../auth/adminAuth.php';
 
       $query = "SELECT COUNT(*) AS total_orders FROM orders";
@@ -33,7 +34,7 @@
 
 ?>
 
-<div class="container-fluid mt-5 pt-5 text-center">
+<div class="container  pt-5 text-center">
     <h2>Welcome, Admin!</h2>
     <p>Manage coffee shop inventory, orders, and users here.</p>
 

@@ -1,9 +1,10 @@
-<?php include '../includes/inHeader.php'; 
+<?php 
+      include '../auth/userAuth.php';
       include '../includes/sidebar.php'; 
       include '../includes/config.php'; 
-      include '../auth/userAuth.php'?>
+      include '../includes/toast.php';?>
 
-<div class="container mt-5 pt-5 ">
+<div class="container pt-5 ">
     <h2>Welcome to Our Shop!</h2>
     <p>Explore our inventory and manage your orders effortlessly.</p>
 
@@ -25,39 +26,11 @@
         </ul>
     </div>
 
-    
-
-    <!-- Product Display Section -->
-    <div class="mt-4">
-        <h3>Our Products</h3>
-        <div class="row">
-            <?php
-            $query = "SELECT * FROM product";
-            $result = mysqli_query($conn, $query);
-
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo '<div class="col-md-4 mt-3">';
-                echo '<div class="card">';
-                // echo '<img src="' . $row['image_url'] . '" class="card-img-top" alt="' . $row['name'] . '">';
-                echo '<div class="card-body">';
-                echo '<h5 class="card-title">' . $row['name'] . '</h5>';
-                // echo '<p class="card-text">' . $row['description'] . '</p>';
-                echo '<p class="card-text"><strong>Price: </strong>₱ ' . $row['Price'] . '</p>';
-                echo '<a href="product_details.php?productId=' . $row['productId'] . '" class="btn btn-primary">View Details</a>';
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
-            }
-            ?>
-        </div>
-    </div>
-    
-
 </div>
 
 
 
-</div> <!-- Close main content div from sidebar.php -->
+</div> 
 </body>
 </html>
 

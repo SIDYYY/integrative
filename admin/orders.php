@@ -1,7 +1,11 @@
 <?php
-include '../includes/inHeader.php';
+// include '../includes/inHeader.php';
 include '../includes/config.php';
 include '../includes/sidebar.php';
+include '../includes/toast.php';
+include '../auth/adminAuth.php';
+
+
 
 // Fetch orders with necessary details
 $query = "SELECT 
@@ -47,9 +51,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['order_id'], $_POST['or
 ?>
 
 
-<div class="container mt-5 pt-5">
+<div class="container pt-5">
 <h1>Orders</h1>
 
+<!-- Table Datas  -->
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>

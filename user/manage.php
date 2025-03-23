@@ -1,7 +1,8 @@
 <?php
 include '../includes/config.php'; 
 include '../includes/sidebar.php'; 
-include '../includes/inHeader.php'; 
+include '../auth/userAuth.php';
+include '../includes/toast.php';
 
 if (!isset($_SESSION['userId'])) {
     header("Location: login.php");
@@ -39,14 +40,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_order'])) {
         $cancel_order->bind_param("i", $orderId);
         $cancel_order->execute();
 
-        echo "<script>alert('Order has been cancelled.'); window.location.href='manage.php';</script>";
+        $_SESSION['message'] = "Item Cancelled Successfully!";
+        $_SESSION['code'] = "success";
     } else {
-        echo "<script>alert('Order cannot be cancelled.'); window.location.href='manage.php';</script>";
-    }
+        $_SESSION['message'] = "Error Changing Status Record: " . $conn->error;
+        $_SESSION['code'] = "danger";
+        }
+    header("Location: manage.php");
+    exit();
 }   
 ?>
 
-<div class="container mt-5 pt-5">
+<!-- Table for user to track their order status  -->
+<div class="container  pt-5">
     <h2>My Orders</h2>
 
     <table class="table table-bordered mt-3">

@@ -1,16 +1,20 @@
 <?php
-include '../includes/inHeader.php';
+// include '../includes/inHeader.php';
 include '../includes/config.php';
 include '../includes/sidebar.php';
+include '../includes/toast.php';
+include '../auth/adminAuth.php';
 
+// User fetch query 
 $query = "SELECT `userId`,`firstName`,`lastName`,`email` FROM `users`";
 
 $result = mysqli_query($conn, $query);
 ?>
 
-        <div class="container mt-5 pt-5">
+        <div class="container pt-5">
 <h1> Users </h1>
 
+<!-- User Info Table -->
 <table class="table table-bordered">
     <thead class="thead-dark">
         <tr>

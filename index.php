@@ -40,7 +40,9 @@
 <body>
 
     <!-- Header -->
-    <?php include './includes/header.php'; ?>
+    <?php 
+    include './includes/header.php'; 
+    ?>
 
 
     <!-- Hero Section -->
