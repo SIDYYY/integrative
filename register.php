@@ -27,11 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Register</title>
+    <title>CJ - Register</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100 bg-light"
-style="background: url('https://png.pngtree.com/background/20230412/original/pngtree-coffee-background-cartoon-border-illustration-picture-image_2396465.jpg') no-repeat center center/cover;">>
+style="background: url('assets/img/shop.jpg') no-repeat center center/cover;">>
 >
 
 <!-- Register Form  -->
@@ -63,7 +63,7 @@ style="background: url('https://png.pngtree.com/background/20230412/original/png
                             <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                        <button type="submit" class="btn btn-dark w-100">Register</button>
                     </form>
 
                     <p class="text-center mt-3">

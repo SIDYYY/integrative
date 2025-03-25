@@ -1,7 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CJ's Online Shop</title>
+    <!-- Add your CSS links here -->
+    <link rel="stylesheet" href="path/to/your/styles.css">
+</head>
+<body>
 <?php
 include '../includes/config.php';
 include '../includes/sidebar.php'; 
 include '../auth/userAuth.php';
+include '../includes/toast.php';
 // include '../includes/inHeader.php'; 
 
 if (!isset($_SESSION['userId'])) {
@@ -74,3 +85,5 @@ $result = $cart_items->get_result();
 
 
 <?php include '../includes/footer.php'; ?>
+    </body>
+    </html>

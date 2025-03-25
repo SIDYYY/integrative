@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Coffee Shop</title>
+    <title>CJ's Online Shop</title>
+    <link rel="icon" href="assets/img/favicon.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #f8f9fa;
         }
         .hero-section {
-            background: url('assets/img/coffeeBG.jpg') no-repeat center center/cover;
+            background: url('assets/img/shop.jpg') no-repeat center center/cover;
             height: 94.1vh;
             display: flex;
             align-items: center;
@@ -47,10 +48,10 @@
 
     <!-- Hero Section -->
     <div class="hero-section">
-        <div class="hero-content">
-            <h1>Welcome to Coffee Shop</h1>
-            <p class="lead">Enjoy the best coffee in town with our premium blends and cozy ambiance.</p>
-            <a href="login.php" class="btn btn-warning btn-lg mt-3">Get Started</a>
+        <div class="hero-content" >
+            <h1>Welcome to CJ's Online Shop</h1>
+            <p class="lead" style="color: black;">Enjoy the best offers online with our premium website and user friendly UI.</p>
+            <a href="login.php" class="btn btn-dark btn-lg mt-3" >Get Started</a>
         </div>
     </div>
 

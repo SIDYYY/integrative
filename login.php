@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
+    <title>CJ - Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light d-flex justify-content-center align-items-center vh-100"
-style="background: url('https://png.pngtree.com/background/20230412/original/pngtree-coffee-background-cartoon-border-illustration-picture-image_2396465.jpg') no-repeat center center/cover;">>
+style="background: url('assets/img/shop.jpg') no-repeat center center/cover;">>
 
 
 <!-- Login Form & Function -->
@@ -71,7 +71,7 @@ style="background: url('https://png.pngtree.com/background/20230412/original/png
                             <input type="password" id="password" name="password" class="form-control" placeholder="Enter password" required>
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                        <button type="submit" class="btn btn-dark w-100">Login</button>
                     </form>
 
                     <p class="text-center mt-3">

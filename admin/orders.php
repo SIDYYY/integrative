@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CJ's Online Shop</title>
+    <!-- Add your CSS links here -->
+    <link rel="stylesheet" href="path/to/your/styles.css">
+</head>
+<body>
 <?php
 // include '../includes/inHeader.php';
 include '../includes/config.php';
@@ -38,7 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['order_id'], $_POST['or
         $stmt->bind_param("si", $order_status, $order_id);
 
         if ($stmt->execute()) {
-            // Redirect instead of using JS reload to prevent form resubmission on refresh
+            $_SESSION['message'] = "Order - " [$order_status];
+            $_SESSION['code'] = "success";
             header("Location: ".$_SERVER['PHP_SELF']);
             exit();
         } else {
@@ -103,3 +114,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['order_id'], $_POST['or
 </div>
 
 <?php include '../includes/footer.php'; ?>  
+            </body>
+            </html>

@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CJ's Online Shop</title>
+    <!-- Add your CSS links here -->
+    <link rel="stylesheet" href="path/to/your/styles.css">
+</head>
+<body>
 <?php
 include '../includes/config.php'; 
 include '../includes/toast.php';
@@ -34,3 +44,6 @@ exit();
 ?>
 
 <!-- Basically Removing Product/Item from the CART  -->
+
+</body>
+</html>
